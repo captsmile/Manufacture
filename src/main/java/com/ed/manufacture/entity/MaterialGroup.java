@@ -15,7 +15,7 @@ public class MaterialGroup {
     @Column(name = "кодгр1")
     private int id;
 
-    @Column(name = "гр1описание")
+    @Column(name = "гр1описание", columnDefinition = "nvarchar(255)")
     private String name;
 
     public String getName() {
