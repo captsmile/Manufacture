@@ -1,5 +1,7 @@
 package com.ed.manufacture.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
