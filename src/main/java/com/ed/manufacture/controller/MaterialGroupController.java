@@ -21,14 +21,14 @@ public class MaterialGroupController {
 
     @RequestMapping(method = RequestMethod.GET)
     String home() {
-        return "material";
+        return "materialgroup";
     }
 
-    @RequestMapping(value = "student", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
+    @RequestMapping(value = "materialgroup", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
     ModelAndView addStudent(@RequestParam String name) throws Exception {
 
-        ModelAndView modelAndView = new ModelAndView("material");
+        ModelAndView modelAndView = new ModelAndView("materialgroup");
         try {
             MaterialGroup materialGroup = new MaterialGroup();
             materialGroup.setName(name);
@@ -38,7 +38,7 @@ public class MaterialGroupController {
         catch (Exception ex){
             modelAndView.addObject("message", "Failed to add Material group: " + ex.getMessage());
         }
-        modelAndView.addObject("students", materialGroupService.getMaterialGroups());
+        modelAndView.addObject("materialgroups", materialGroupService.getMaterialGroups());
         return modelAndView;
     }
 }

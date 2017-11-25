@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add new Material group</div>
+                <div class="panel-body">
+                    <form method="post" class="form-group" action="/materialgroup">
+
+
+                        <div class="form-group">
+                            <label for="name">Name:&nbsp;</label>
+                            <input class="form-control" type="text" name="name" id="name" maxlength="50"/>
+                        </div>
+
+
+                        <input class="btn btn-primary" type="submit" value="Save"/>
+
+                    </form>
+                </div>
+                <div class="panel-footer"><span th:text="${message}">Status</span></div>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Material group list</div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="materialgroup : ${materialgroups}">
+                            <td th:text="${materialgroup.getId()}">Id</td>
+                            <td th:text="${materialgroup.getName()}">Name</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
