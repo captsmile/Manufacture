@@ -1,12 +1,13 @@
 package com.ed.manufacture.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "гр1сырьё")
-@Data
 public class MaterialGroup {
 
     @Id
@@ -17,4 +18,11 @@ public class MaterialGroup {
     @Column(name = "гр1описание")
     private String name;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
