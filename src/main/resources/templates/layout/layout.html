@@ -1,32 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-    <meta charset="utf-8"></meta>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<html layout:decorator="layout/module" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
 
-    <meta name="description" content="Manufacture Information System using SpringBoot, ThymeLeaf, H2 database"></meta>
-    <meta name="author" content="www.localhost.com"></meta>
-    <title>Manufacture Information System</title>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"></link>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-
-</head>
 <body>
+<th:block layout:fragment="layout">
+
 <div class="container-fluid">
     <nav class="navbar navbar-full navbar-inverse">
         <div class="container-fluid">
@@ -36,9 +13,13 @@
             <ul class="navbar-nav nav">
                 <li class="nav-item active"><a class="nav-link" href="/">Material</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                <li class="nav-item"><form th:action="@{/logout}" method="post">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+
+                <!--<li><form th:action="@{/logout}" method="post">
                     <input type="submit" value="Sign Out"/>
-                </form></li>
+                </form></li>-->
             </ul>
         </div>
     </nav>
@@ -50,5 +31,6 @@
         <p>Copyright © 2017 <a href="#">www.localhost.com</a></p>
     </footer>
 </div>
+</th:block>
 </body>
 </html>
