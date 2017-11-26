@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -19,9 +16,15 @@ public class MaterialGroupController {
     @Autowired
     MaterialGroupService materialGroupService;
 
+    @GetMapping("/login")
+    String login(){
+        return "login";
+    }
     @RequestMapping(method = RequestMethod.GET)
-    String home() {
-        return "materialgroup";
+    ModelAndView home() {
+        ModelAndView modelAndView = new ModelAndView("materialgroup");
+        modelAndView.addObject("materialgroups", materialGroupService.getMaterialGroups());
+        return modelAndView;
     }
 
     @RequestMapping(value = "materialgroup", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
@@ -29,6 +32,7 @@ public class MaterialGroupController {
     ModelAndView addStudent(@RequestParam String name) throws Exception {
 
         ModelAndView modelAndView = new ModelAndView("materialgroup");
+
         try {
             MaterialGroup materialGroup = new MaterialGroup();
             materialGroup.setName(name);
@@ -41,4 +45,13 @@ public class MaterialGroupController {
         modelAndView.addObject("materialgroups", materialGroupService.getMaterialGroups());
         return modelAndView;
     }
+
+    @RequestMapping(value = "materialgroup/{id}", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    String deleteMaterialGroup(@PathVariable("id") int id)
+    {
+        materialGroupService.delMaterialGroup(id);
+        return "redirect:/";
+    }
+
 }

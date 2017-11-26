@@ -19,4 +19,8 @@ public class MaterialGroupService {
     public Iterable<MaterialGroup> getMaterialGroups(){
         return materialGroupRepository.findAll();
     }
+
+    public void delMaterialGroup(int id){
+        materialGroupRepository.delete(id);
+    }
 }

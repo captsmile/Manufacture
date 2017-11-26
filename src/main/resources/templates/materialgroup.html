@@ -34,12 +34,14 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="materialgroup : ${materialgroups}">
                             <td th:text="${materialgroup.getId()}">Id</td>
                             <td th:text="${materialgroup.getName()}">Name</td>
+                            <td><a th:href="@{/materialgroup/{id}(id=${materialgroup.getId()})}" class="btn btn-danger" role = "button">Удалить</a></td>
                         </tr>
                         </tbody>
                     </table>
