@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html layout:decorator="layout/module" xmlns:th="http://www.thymeleaf.org">
+<html layout:decorator="layout/module" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
 
 <body>
 <th:block layout:fragment="layout">
-    <div class="text-center">
-        <div class="container">
-            <div class=" row col-md-6 col-md-offset-3">
-                <form th:action="@{/login}" method="post" class="form-signin">
-                    <h2 class="form-signin-heading">Please login</h2>
-                    <select class="selectpicker">
-                        <tr th:each="login : ${logins}">
-                            <option th:value="${login.getId()}" th:text="${login.getSurname()}"
-                                    name="username"></option>
-                        </tr>
-                    </select>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
-                    <div><input class="btn btn-large btn-primary" type="submit" value="Sign In"/></div>
 
-                    <div th:if="${param.error}">
-                        Invalid username and password.
-                    </div>
-                    <div th:if="${param.logout}">
-                        You have been logged out.
-                    </div>
+    <div class="container">
+        <form th:action="@{/login}" method="post" class="form-signin">
+            <h2 class="form-signin-heading">Please login</h2>
+            <select class="selectpicker" name="username">
+                <tr th:each="login : ${logins}">
+                    <option th:value="${login.getSurname()}" th:text="${login.getSurname()}"></option>
+                </tr>
+            </select>
+            <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+            <div><input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign In"/></div>
 
-                </form>
+            <div th:if="${param.error}">
+                Invalid username and password.
             </div>
-        </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
+
+        </form>
     </div>
 </th:block>
 </body>

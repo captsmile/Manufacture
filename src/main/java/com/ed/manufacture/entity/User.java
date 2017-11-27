@@ -26,4 +26,9 @@ public class User {
     @Column(name = "уволен")
     private boolean dismissed;
 
+    @Transient
+    private String role = "USER";
+
+
+
 }
