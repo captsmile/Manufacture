@@ -27,22 +27,27 @@ public class MaterialGroupController {
     UserService userService;
 
     @GetMapping("/login")
-    ModelAndView login(){
+    ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView("login");
         modelAndView.addObject("logins", userService.getAuthUsers());
         return modelAndView;
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping("test")
+    String test() {
+        return "test";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
+        if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login?logout";
     }
 
-    @RequestMapping(value={"/materialgroup","**"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/materialgroup", "**"}, method = RequestMethod.GET)
     ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("materialgroup");
         modelAndView.addObject("materialgroups", materialGroupService.getMaterialGroups());
@@ -60,8 +65,7 @@ public class MaterialGroupController {
             materialGroup.setName(name);
             materialGroup = materialGroupService.addMaterialGroup(materialGroup);
             modelAndView.addObject("message", "Material group added with name: " + materialGroup.getName());
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             modelAndView.addObject("message", "Failed to add Material group: " + ex.getMessage());
         }
         modelAndView.addObject("materialgroups", materialGroupService.getMaterialGroups());
@@ -69,8 +73,7 @@ public class MaterialGroupController {
     }
 
     @RequestMapping(value = "/materialgroup/{id}", method = RequestMethod.GET)
-    String deleteMaterialGroup(@PathVariable("id") int id)
-    {
+    String deleteMaterialGroup(@PathVariable("id") int id) {
         materialGroupService.delMaterialGroup(id);
         return "redirect:/materialgroup";
 
