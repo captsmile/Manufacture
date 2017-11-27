@@ -8,13 +8,10 @@
         <form th:action="@{/login}" method="post" class="form-signin">
             <h2 class="form-signin-heading">Please login</h2>
             <select class="selectpicker" name="username">
-                <tr th:each="login : ${logins}">
-                    <option th:value="${login.getSurname()}" th:text="${login.getSurname()}"></option>
-                </tr>
+                <option th:each="login : ${logins}" th:value="${login.getSurname()}" th:text="${login.getSurname()}"></option>
             </select>
             <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
-            <div><input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign In"/></div>
-
+            <div><input class="btn btn-primary btn-block" type="submit" value="Sign In"/></div>
             <div th:if="${param.error}">
                 Invalid username and password.
             </div>
