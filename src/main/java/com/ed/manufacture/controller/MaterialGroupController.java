@@ -2,6 +2,7 @@ package com.ed.manufacture.controller;
 
 import com.ed.manufacture.entity.MaterialGroup;
 import com.ed.manufacture.service.MaterialGroupService;
+import com.ed.manufacture.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,9 +23,14 @@ public class MaterialGroupController {
     @Autowired
     MaterialGroupService materialGroupService;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping("/login")
-    String login(){
-        return "login";
+    ModelAndView login(){
+        ModelAndView modelAndView = new ModelAndView("login");
+        modelAndView.addObject("logins", userService.getAuthUsers());
+        return modelAndView;
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
@@ -33,7 +39,7 @@ public class MaterialGroupController {
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/login?logout";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
+        return "redirect:/login?logout";
     }
 
     @RequestMapping(value={"/materialgroup","**"},method = RequestMethod.GET)
