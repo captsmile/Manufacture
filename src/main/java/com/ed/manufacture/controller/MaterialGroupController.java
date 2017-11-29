@@ -42,6 +42,11 @@ public class MaterialGroupController {
         return "redirect:/login?logout";
     }
 
+    @RequestMapping("/dashboard")
+    String dashboard(){
+        return "dashboard";
+    }
+
     @RequestMapping(value = {"/materialgroup"}, method = RequestMethod.GET)
     ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("materialgroup");

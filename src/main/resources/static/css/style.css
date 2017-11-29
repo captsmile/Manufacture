@@ -1,22 +1,18 @@
-h1{
-    color: red;
-}
-
-.form-signin
+.form-signin-ed
 {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
 }
-.form-signin .form-signin-heading, .form-signin .checkbox
+.form-signin-ed .form-signin-ed-heading, .form-signin-ed .checkbox
 {
     margin-bottom: 10px;
 }
-.form-signin .checkbox
+.form-signin-ed .checkbox
 {
     font-weight: normal;
 }
-.form-signin .form-control
+.form-signin-ed .form-control
 {
     position: relative;
     font-size: 16px;
@@ -26,17 +22,17 @@ h1{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.form-signin .form-control:focus
+.form-signin-ed .form-control:focus
 {
     z-index: 2;
 }
-.form-signin input[type="text"]
+.form-signin-ed input[type="text"]
 {
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.form-signin input[type="password"]
+.form-signin-ed input[type="password"]
 {
     margin-bottom: 10px;
     border-top-left-radius: 0;
