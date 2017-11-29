@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping("/")
 public class MaterialGroupController {
 
     @Autowired
@@ -33,6 +32,7 @@ public class MaterialGroupController {
         return modelAndView;
     }
 
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -42,7 +42,7 @@ public class MaterialGroupController {
         return "redirect:/login?logout";
     }
 
-    @RequestMapping("/dashboard")
+    @GetMapping("/")
     String dashboard(){
         return "dashboard";
     }
