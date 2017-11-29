@@ -33,11 +33,6 @@ public class MaterialGroupController {
         return modelAndView;
     }
 
-    @GetMapping("test")
-    String test() {
-        return "test";
-    }
-
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -47,7 +42,7 @@ public class MaterialGroupController {
         return "redirect:/login?logout";
     }
 
-    @RequestMapping(value = {"/materialgroup", "**"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/materialgroup"}, method = RequestMethod.GET)
     ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("materialgroup");
         modelAndView.addObject("materialgroups", materialGroupService.getMaterialGroups());
