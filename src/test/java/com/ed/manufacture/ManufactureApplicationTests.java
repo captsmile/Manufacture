@@ -21,7 +21,7 @@ public class ManufactureApplicationTests {
 
 	@Test
 	public void findUser(){
-		String name = "Носач";
+		String name = "Гусев";
 		Assert.assertEquals(userRepository.findUser(name).getSurname(),name);
 	}
 

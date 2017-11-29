@@ -54,6 +54,11 @@ public class MaterialGroupController {
         return modelAndView;
     }
 
+    @RequestMapping(value = {"/error"}, method = RequestMethod.GET)
+    String error() {
+        return "error";
+    }
+
     @RequestMapping(value = "/materialgroup", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
     ModelAndView addStudent(@RequestParam String name) throws Exception {
